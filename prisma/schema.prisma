@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model GearEnchantment {
+  item_id          Int
+  enchantment_name String     @db.VarChar(250)
+  gear_score       Int
+  playerGear       PlayerGear @relation(fields: [item_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "GearEnchantment_ibfk_1")
+
+  @@id([item_id, enchantment_name])
+}
+
+model JobData {
+  uuid       String   @db.VarChar(250)
+  job        String   @db.VarChar(250)
+  level      Int      @default(1)
+  experience Int      @default(0)
+  started    DateTime @default(now()) @db.DateTime(0)
+
+  @@id([uuid, job])
+}
+
+model PlayerGear {
+  id              Int               @id @default(autoincrement())
+  item_owner      String            @db.VarChar(500)
+  item_name       String            @db.VarChar(250)
+  base_gear_score Int
+  item_type       String?           @db.VarChar(250)
+  enchantments    GearEnchantment[]
+}
+
+model UserData {
+  uuid String @db.VarChar(250)
+  job  String @db.VarChar(250)
+
+  @@id([uuid, job])
+}
+
+model NewsArticle {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(500)
+  preview      String   @db.VarChar(1000)
+  content      String   @db.VarChar(5000)
+  author       String   @db.VarChar(150)
+  posted       DateTime @default(now()) @db.DateTime(0)
+  header       String   @db.VarChar(500)
+  displayLarge Boolean?
+}
+
+model LandingCard {
+  id                Int                 @id @default(autoincrement())
+  title             String              @db.VarChar(500)
+  preview           String              @db.VarChar(1000)
+  header            String              @db.VarChar(500)
+  landingCardButton LandingCardButton[]
+}
+
+model LandingCardButton {
+  card_id     Int
+  button_text String      @db.VarChar(250)
+  button_link String      @db.VarChar(500)
+  id          Int         @id @default(autoincrement())
+  LandingCard LandingCard @relation(fields: [card_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "LandingCardButton_ibfk_1")
+
+  @@index([card_id], map: "card_id")
+}
+
+model Expansions {
+  id       Int      @id @default(autoincrement())
+  title    String   @db.VarChar(250)
+  released DateTime @default(now()) @db.DateTime(0)
+  Job      Job[]
+}
+
+model Job {
+  id         Int        @id @default(autoincrement())
+  job_name   String     @db.VarChar(100)
+  job_desc   String     @db.VarChar(750)
+  added      Int
+  expansion  Expansions @relation(fields: [added], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Job_ibfk_1")
+
+  @@index([added], map: "added")
+}
