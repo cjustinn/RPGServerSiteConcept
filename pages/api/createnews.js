@@ -1,6 +1,24 @@
 import prisma from "../../services/PrismaService";
+import Cors from 'cors';
 
-export default function handler(req, res) { 
+const cors = Cors({
+    methods: [ 'POST' ]
+});
+
+function runMiddleware(req, res, fn) {
+    return new Promise((resolve, reject) => {
+        fn(req, res, (result) => {
+            if (result instanceof Error) {
+                return reject(result);
+            } else {
+                return resolve(result);
+            }
+        })
+    })
+}
+export default async function handler(req, res) {
+    await runMiddleware(req, res, cors);
+
     if (!req.body.article) { res.status(400).json({ error: `You must provide article content.` }); }
     else {
 
