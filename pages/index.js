@@ -85,13 +85,13 @@ export default function Home({ largeArticles, latestArticles, homePageCards }) {
                       const linkIsInternal = btn.button_link.startsWith("/");
 
                       if (linkIsInternal) {
-                        return <Link href={btn.button_link}>
+                        return <Link key={btn.button_text} href={btn.button_link}>
                           <span className="cursor-pointer px-8 py-3 rounded-sm bg-zinc-900 border border-amber-600 uppercase bg-opacity-50 transition duration-200 hover:bg-opacity-100 hover:bg-amber-700 hover:text-amber-300 text-amber-500 font-roboto">
                             {btn.button_text}
                           </span>
                         </Link>
                       } else {
-                        return <a href={btn.button_link} target="_blank">
+                        return <a key={btn.button_text} href={btn.button_link} target="_blank" rel='noreferrer'>
                           <span className="cursor-pointer px-8 py-3 rounded-sm bg-zinc-900 border border-amber-600 uppercase bg-opacity-50 transition duration-200 hover:bg-opacity-100 hover:bg-amber-700 hover:text-amber-300 text-amber-500 font-roboto">
                             {btn.button_text}
                           </span>
