@@ -67,7 +67,7 @@ export default function ArmoryIndex({ players }) {
                     {
                         players?.length > 0 ?
                         players.map(ply => {
-                            return <PlayerResultCard Player={ply}/>
+                            return <PlayerResultCard key={ply.uuid} Player={ply}/>
                         })
                         :
                         <p className="text-roboto text-xl text-white font-bold">There are no players to display!</p>

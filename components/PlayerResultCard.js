@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function(props) {
+export default function PlayerResultCard(props) {
     // Props -> Player
 
     return <Link href={`/armory/${props.Player.uuid}`}>

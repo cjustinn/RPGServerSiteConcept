@@ -16,7 +16,7 @@ function SplitTypeToString(type) {
     return str;
 }
 
-export default (props) => {
+export default function PlayerGearComponent(props) {
     // Props -> Items
     const [ open, setOpen ] = useState(false);
     const [ values, setValues ] = useState({
@@ -42,8 +42,8 @@ export default (props) => {
                     else if (score >= 100 && score < 125) { borderColor = "border-fuchsia-500"; }
                     else if (score >= 125) { borderColor = "border-amber-500"; }
 
-                    return <Tooltip style='dark' placement='top-start' content={`${item.item_name}`}>
-                        <div key={item.id} className={`p-2 bg-zinc-800 rounded-lg border-2 ${borderColor} hover:scale-105 transition duration-500 cursor-pointer`}>
+                    return <Tooltip key={item.id} style='dark' placement='top-start' content={`${item.item_name}`}>
+                        <div className={`p-2 bg-zinc-800 rounded-lg border-2 ${borderColor} hover:scale-105 transition duration-500 cursor-pointer`}>
                             <Image src={`/${item.item_type.toLowerCase()}.png`} height={48} width={48} onClick={() => {
                                 setValues({
                                     name: item.item_name,
@@ -89,7 +89,7 @@ export default (props) => {
                             {
                                 values.enchantments.length > 0 ?
                                 values.enchantments.map(enc => {
-                                    return <div>
+                                    return <div key={enc.enchantment_name}>
                                         <span className="text-bold text-lg text-gray-200">{enc.enchantment_name}</span>
                                         <div className="flex-inherit flex flex-row gap-1 text-roboto text-md items-center text-amber-500">
                                             <GiAxeSword/>

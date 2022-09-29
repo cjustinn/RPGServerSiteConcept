@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-export default () => {
+export default function NavigationBar() {
     const [ open, setOpen ] = useState(false);
 
     return <nav className="p-2 w-full bg-gradient-to-t from-zinc-900 via-zinc-900 to-zinc-800 border-b border-neutral-700">

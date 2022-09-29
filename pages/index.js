@@ -62,7 +62,7 @@ export default function Home({ largeArticles, latestArticles, homePageCards }) {
           <div className="flex-1 grid py-2 grid-cols-1 md:grid-cols-5 grid-rows-auto gap-4">
             {
               latestArticles.map(article => {
-                return <RecentArticleCard Article={article}/>
+                return <RecentArticleCard key={article.id} Article={article}/>
               })
             }
           </div>
@@ -70,7 +70,7 @@ export default function Home({ largeArticles, latestArticles, homePageCards }) {
         <div className="flex-1 grid py-2 grid-cols-1 grid-rows-auto gap-1">
           {
             homePageCards.map(card => {
-              return <div className="p-8 flex flex-col gap-6 overflow-x-hidden overflow-y-hidden border-y border-zinc-800" style={{
+              return <div key={card.id} className="p-8 flex flex-col gap-6 overflow-x-hidden overflow-y-hidden border-y border-zinc-800" style={{
                 backgroundImage: `url(${card.header})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
@@ -105,7 +105,7 @@ export default function Home({ largeArticles, latestArticles, homePageCards }) {
           }
           {
             largeArticles.map(article => {
-              return <div className="p-8 flex flex-col gap-6 overflow-x-hidden overflow-y-hidden border-y border-zinc-800" style={{
+              return <div key={article.id} className="p-8 flex flex-col gap-6 overflow-x-hidden overflow-y-hidden border-y border-zinc-800" style={{
                 backgroundImage: `url(${article.header})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'

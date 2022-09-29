@@ -29,7 +29,7 @@ export default function ProfessionsPage({ professions }) {
             <div className="md:col-span-2 text-center flex flex-col gap-2 items-center justify-center">
                 <h1 className="text-white font-raleway font-bold text-3xl">What are professions?</h1>
                 <p className="w-full md:w-2/3 text-zinc-400 font-roboto font-light text-lg">
-                    In the Realm of Ejogar, players can select one or more professions which will dictate how they generate an income, aside from owning and maintaining a shop. Every profession has two or more attributes which give them bonuses relating to their industry, such as increased drop yields or experience gain; some professions also have passive attributes, such as durability damage reductions. By performing your professions non-passive attributes you will earn in-game money as well as profession experience allowing you to level up in your profession, which in turn increases the effectiveness and scale of your profession's bonuses.
+                    In the Realm of Ejogar, players can select one or more professions which will dictate how they generate an income, aside from owning and maintaining a shop. Every profession has two or more attributes which give them bonuses relating to their industry, such as increased drop yields or experience gain; some professions also have passive attributes, such as durability damage reductions. By performing your professions non-passive attributes you will earn in-game money as well as profession experience allowing you to level up in your profession, which in turn increases the effectiveness and scale of your profession&apos;s bonuses.
                 </p>
             </div>
 

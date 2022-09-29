@@ -82,8 +82,8 @@ const Profile = ({ professions, userData, gear }) => {
                     gear?.length > 0 ?
                     <>
                         <PlayerGearComponent Items={gear.filter(g => g.item_type.toLowerCase().endsWith('_helmet') || g.item_type.toLowerCase().endsWith('_chestplate') || g.item_type.toLowerCase().endsWith('_leggings') || g.item_type.toLowerCase().endsWith('_boots'))}/>
-                <PlayerGearComponent Items={gear.filter(g => g.item_type.toLowerCase().endsWith('_sword') || g.item_type.toLowerCase().endsWith('bow') || g.item_type.toLowerCase().endsWith('_axe'))}/>
-                <PlayerGearComponent Items={gear.filter(g => g.item_type.toLowerCase().endsWith('_pickaxe') || g.item_type.toLowerCase().endsWith('_shovel') || g.item_type.toLowerCase().endsWith('_hoe'))}/>
+                        <PlayerGearComponent Items={gear.filter(g => g.item_type.toLowerCase().endsWith('_sword') || g.item_type.toLowerCase().endsWith('bow') || g.item_type.toLowerCase().endsWith('_axe'))}/>
+                        <PlayerGearComponent Items={gear.filter(g => g.item_type.toLowerCase().endsWith('_pickaxe') || g.item_type.toLowerCase().endsWith('_shovel') || g.item_type.toLowerCase().endsWith('_hoe'))}/>
                     </>
                     :
                     <p className="text-start font-light text-gray-300 font-roboto drop-shadow-[0_0px_3px_rgba(0,0,0,0.5)] text-md">This player has no equipped gear.</p>
@@ -102,7 +102,7 @@ const Profile = ({ professions, userData, gear }) => {
                     {
                         professions.length > 0 ?
                         professions.map(_p => {
-                            return <ProfessionProgressCard name={_p.name} percentage={_p.level} started={_p.started} />
+                            return <ProfessionProgressCard key={_p.name} name={_p.name} percentage={_p.level} started={_p.started} />
                         })
                         :
                         <p className="text-end font-light text-gray-300 font-roboto drop-shadow-[0_0px_3px_rgba(0,0,0,0.5)] text-md">{userData.playerName} has no professions!</p>

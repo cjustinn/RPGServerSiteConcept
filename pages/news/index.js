@@ -16,7 +16,7 @@ export default function NewsIndex({ articles }) {
 
                 {
                     articles.map(_a => {
-                        return <RecentArticleCard Article={_a}/>
+                        return <RecentArticleCard key={_a.id} Article={_a}/>
                     })
                 }
             </div>

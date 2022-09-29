@@ -1,6 +1,6 @@
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 
-export default (props) => {
+export default function ProfessionProgressCard(props) {
     // Props -> Name, percentage
     return <div className="p-4 bg-zinc-800 grid grid-rows-1 grid-cols-4 rounded-xl border-2 border-zinc-600 items-center text-start cursor-default transition duration-300 hover:border-amber-500">
         <div className="col-span-3">
