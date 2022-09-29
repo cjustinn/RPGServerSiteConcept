@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     else {
 
         prisma.newsArticle.create({
-            data: req.body.article
+            data: JSON.parse(req.body.article)
         }).then(() => {
             res.status(201).json({ message: `Successfully created the article.` });
         }).catch(err => res.status(500).json({ error: err }));
