@@ -2,7 +2,7 @@ import prisma from "../../services/PrismaService";
 import Cors from 'cors';
 
 const cors = Cors({
-    methods: [ 'POST' ]
+    methods: [ 'POST', 'GET', 'PUT', 'DELETE' ]
 });
 
 function runMiddleware(req, res, fn) {
@@ -16,6 +16,7 @@ function runMiddleware(req, res, fn) {
         })
     })
 }
+
 export default async function handler(req, res) {
     await runMiddleware(req, res, cors);
 
